@@ -1,0 +1,7 @@
+[theme]
+base="light"
+primaryColor="#2F80ED"                # clean blue
+backgroundColor="#F5F7FA"             # soft gray background
+secondaryBackgroundColor="#FFFFFF"    # cards/containers
+textColor="#1F2937"                   # dark gray text
+font="sans serif"
