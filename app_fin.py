@@ -29,40 +29,83 @@ st.markdown("""
 
 st.markdown("""
 <style>
+
+/* Main trading background (dark + grid + depth) */
 .stApp {
-    background: linear-gradient(135deg, #0b0f1a 0%, #111827 40%, #0a192f 100%);
+    background:
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 200, 0.08), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 140, 255, 0.10), transparent 45%),
+        linear-gradient(180deg, #070b14 0%, #0a1224 50%, #050814 100%);
     color: #ffffff;
 }
 
-/* Glass effect for sections */
-.block-container {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 2rem;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+/* Floating grid (trading terminal feel) */
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
 }
 
-/* Improve headings */
+/* Floating stock symbols overlay */
+.stApp::after {
+    content: "📈 ₿ 💹 📊 📉 STOCKS FOREX CRYPTO TRADING";
+    position: fixed;
+    font-size: 90px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.03);
+    top: 20%;
+    left: 5%;
+    transform: rotate(-20deg);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Glass UI effect */
+.block-container {
+    position: relative;
+    z-index: 1;
+    background: rgba(10, 15, 30, 0.55);
+    border-radius: 18px;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 25px rgba(0, 255, 200, 0.08);
+}
+
+/* Title styling */
 h1, h2, h3 {
     text-align: center;
-    color: #00d4ff;
-    font-weight: 600;
+    color: #00f5ff;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(0,255,255,0.3);
 }
 
-/* Metric cards glow */
+/* Metrics cards glow */
 div[data-testid="stMetric"] {
-    background: rgba(0, 212, 255, 0.08);
-    padding: 10px;
+    background: rgba(0, 255, 200, 0.05);
+    border: 1px solid rgba(0, 255, 200, 0.15);
+    padding: 12px;
     border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.15);
+    box-shadow: 0 0 12px rgba(0, 255, 200, 0.1);
 }
 
-/* Inputs styling */
+/* Inputs */
 input {
-    background-color: #0f172a !important;
+    background-color: #0b1220 !important;
     color: white !important;
-    border-radius: 8px;
+    border: 1px solid rgba(0,255,255,0.2) !important;
+    border-radius: 10px !important;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
