@@ -1,0 +1,7 @@
+streamlit
+pandas
+requests
+plotly
+anthropic
+forex-python
+yfinance
