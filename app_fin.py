@@ -28,106 +28,120 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <style>
 
-/* ================= BOOTSTRAP DARK DASHBOARD THEME ================= */
+/* ================= ROOT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .stApp {
-    background: #0b1220;
-    color: #e2e8f0;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(circle at top, #050505 0%, #000000 100%);
+    color: #00ff88;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Main container (Bootstrap card feel) */
+/* ================= MAIN CONTAINER ================= */
 .block-container {
     max-width: 1200px;
     margin: auto;
     padding: 2rem;
+    background: rgba(10, 10, 10, 0.85);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.08);
 }
 
 /* ================= HEADINGS ================= */
 h1 {
     font-size: 2.4rem;
-    font-weight: 700;
+    font-weight: 800;
+    color: #00ff88;
     text-align: center;
-    color: #f8fafc;
-    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0,255,136,0.3);
 }
 
 h2, h3 {
-    font-weight: 600;
-    color: #cbd5e1;
+    color: #b6ffda;
     text-align: center;
+    font-weight: 600;
 }
 
-/* ================= BOOTSTRAP CARD STYLE ================= */
+/* ================= TEXT ================= */
+p, div, span {
+    color: #c9ffe5;
+    font-size: 0.95rem;
+}
+
+/* ================= METRICS ================= */
 div[data-testid="stMetric"] {
-    background: #111827;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,255,136,0.08);
 }
 
-/* Metric labels */
 div[data-testid="stMetricLabel"] {
-    color: #94a3b8;
+    color: #7ef9b6;
     font-size: 0.85rem;
 }
 
-/* Metric values */
 div[data-testid="stMetricValue"] {
-    color: #f8fafc;
+    color: #00ff88;
     font-size: 1.3rem;
     font-weight: 700;
 }
 
-/* ================= INPUTS (Bootstrap form style) ================= */
+/* ================= INPUT BOX ================= */
 input {
-    background-color: #0f172a !important;
-    color: #f8fafc !important;
-    border: 1px solid #334155 !important;
+    background-color: #000 !important;
+    color: #00ff88 !important;
+    border: 1px solid rgba(0,255,136,0.3) !important;
     border-radius: 10px !important;
     padding: 10px !important;
 }
 
-/* ================= BUTTON (Bootstrap primary feel) ================= */
+/* ================= BUTTON ================= */
 button {
-    background-color: #2563eb !important;
-    color: white !important;
+    background: linear-gradient(90deg, #00ff88, #00cc66) !important;
+    color: #000 !important;
+    font-weight: 700 !important;
     border-radius: 10px !important;
     border: none !important;
-    padding: 0.5rem 1rem !important;
+    transition: 0.2s ease-in-out;
 }
 
 button:hover {
-    background-color: #1d4ed8 !important;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0,255,136,0.4);
 }
 
-/* ================= TABLE ================= */
+/* ================= DATA TABLE ================= */
 table {
-    background: #0f172a !important;
-    color: #e2e8f0 !important;
+    background: #000 !important;
+    color: #00ff88 !important;
+    border: 1px solid rgba(0,255,136,0.2);
 }
 
-/* ================= CHART CONTAINER ================= */
+/* ================= SIDEBAR / ADS ================= */
+.css-1d391kg {
+    background-color: #000 !important;
+}
+
+/* ================= CHART ================= */
 .js-plotly-plot {
-    background: #111827 !important;
+    background: #000 !important;
     border-radius: 12px;
-    padding: 10px;
+    box-shadow: 0 0 15px rgba(0,255,136,0.08);
 }
 
-/* ================= LINKS (Bootstrap style) ================= */
+/* ================= LINKS ================= */
 a {
-    color: #60a5fa !important;
+    color: #00ff88 !important;
 }
 
-/* ================= CLEAN SIDEBAR ================= */
-section[data-testid="stSidebar"] {
-    background-color: #0a0f1c;
-    border-right: 1px solid rgba(255,255,255,0.05);
+a:hover {
+    color: #7CFFB2 !important;
 }
 
 </style>
