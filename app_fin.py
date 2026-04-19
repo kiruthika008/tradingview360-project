@@ -28,82 +28,106 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("""
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
 
-/* Main trading background (dark + grid + depth) */
+/* ================= BOOTSTRAP DARK DASHBOARD THEME ================= */
+
 .stApp {
-    background:
-        radial-gradient(circle at 10% 20%, rgba(0, 255, 200, 0.08), transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 140, 255, 0.10), transparent 45%),
-        linear-gradient(180deg, #070b14 0%, #0a1224 50%, #050814 100%);
-    color: #ffffff;
+    background: #0b1220;
+    color: #e2e8f0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
-/* Floating grid (trading terminal feel) */
-.stApp::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Floating stock symbols overlay */
-.stApp::after {
-    content: "📈 ₿ 💹 📊 📉 STOCKS FOREX CRYPTO TRADING";
-    position: fixed;
-    font-size: 90px;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.03);
-    top: 20%;
-    left: 5%;
-    transform: rotate(-20deg);
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Glass UI effect */
+/* Main container (Bootstrap card feel) */
 .block-container {
-    position: relative;
-    z-index: 1;
-    background: rgba(10, 15, 30, 0.55);
-    border-radius: 18px;
+    max-width: 1200px;
+    margin: auto;
     padding: 2rem;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 25px rgba(0, 255, 200, 0.08);
 }
 
-/* Title styling */
-h1, h2, h3 {
-    text-align: center;
-    color: #00f5ff;
+/* ================= HEADINGS ================= */
+h1 {
+    font-size: 2.4rem;
     font-weight: 700;
-    text-shadow: 0 0 15px rgba(0,255,255,0.3);
+    text-align: center;
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
 }
 
-/* Metrics cards glow */
+h2, h3 {
+    font-weight: 600;
+    color: #cbd5e1;
+    text-align: center;
+}
+
+/* ================= BOOTSTRAP CARD STYLE ================= */
 div[data-testid="stMetric"] {
-    background: rgba(0, 255, 200, 0.05);
-    border: 1px solid rgba(0, 255, 200, 0.15);
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0, 255, 200, 0.1);
+    background: #111827;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Inputs */
+/* Metric labels */
+div[data-testid="stMetricLabel"] {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+/* Metric values */
+div[data-testid="stMetricValue"] {
+    color: #f8fafc;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* ================= INPUTS (Bootstrap form style) ================= */
 input {
-    background-color: #0b1220 !important;
-    color: white !important;
-    border: 1px solid rgba(0,255,255,0.2) !important;
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+    border: 1px solid #334155 !important;
     border-radius: 10px !important;
+    padding: 10px !important;
+}
+
+/* ================= BUTTON (Bootstrap primary feel) ================= */
+button {
+    background-color: #2563eb !important;
+    color: white !important;
+    border-radius: 10px !important;
+    border: none !important;
+    padding: 0.5rem 1rem !important;
+}
+
+button:hover {
+    background-color: #1d4ed8 !important;
+}
+
+/* ================= TABLE ================= */
+table {
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+}
+
+/* ================= CHART CONTAINER ================= */
+.js-plotly-plot {
+    background: #111827 !important;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+/* ================= LINKS (Bootstrap style) ================= */
+a {
+    color: #60a5fa !important;
+}
+
+/* ================= CLEAN SIDEBAR ================= */
+section[data-testid="stSidebar"] {
+    background-color: #0a0f1c;
+    border-right: 1px solid rgba(255,255,255,0.05);
 }
 
 </style>
