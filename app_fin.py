@@ -27,6 +27,33 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+/* Center entire app content */
+.block-container {
+    max-width: 1100px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: auto;
+}
+
+/* Center titles */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Center metrics and charts */
+div[data-testid="stMetric"] {
+    text-align: center;
+}
+
+/* Center text inputs */
+div[data-testid="stTextInput"] {
+    text-align: center;
+}
+</style>
+""", unsafe_allow_html=True)
+
 # ================= TOP MODE (CAD / USD) =================
 st.subheader("🌍 Market Display Mode")
 
