@@ -8,7 +8,7 @@ import pytz
 # ================= CONFIG =================
 st.set_page_config(page_title="AI Trading Pro", layout="wide")
 
-st.title("📊 AI Trading Pro Dashboard")
+st.title("📈 Quantum Trade Intelligence Terminal")
 st.caption("Stock Scanner + News + Claude AI Assistant")
 
 # ================= KEYS =================
@@ -29,27 +29,39 @@ st.markdown("""
 
 st.markdown("""
 <style>
-/* Center entire app content */
-.block-container {
-    max-width: 1100px;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin: auto;
+.stApp {
+    background: linear-gradient(135deg, #0b0f1a 0%, #111827 40%, #0a192f 100%);
+    color: #ffffff;
 }
 
-/* Center titles */
+/* Glass effect for sections */
+.block-container {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* Improve headings */
 h1, h2, h3 {
     text-align: center;
+    color: #00d4ff;
+    font-weight: 600;
 }
 
-/* Center metrics and charts */
+/* Metric cards glow */
 div[data-testid="stMetric"] {
-    text-align: center;
+    background: rgba(0, 212, 255, 0.08);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.15);
 }
 
-/* Center text inputs */
-div[data-testid="stTextInput"] {
-    text-align: center;
+/* Inputs styling */
+input {
+    background-color: #0f172a !important;
+    color: white !important;
+    border-radius: 8px;
 }
 </style>
 """, unsafe_allow_html=True)
