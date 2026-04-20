@@ -6,6 +6,7 @@ import requests
 from anthropic import Anthropic
 from datetime import datetime, timezone
 import pytz
+import streamlit.components.v1 as components
 
 # ================= CONFIG =================
 st.set_page_config(page_title="AI Trading Pro", layout="wide")
