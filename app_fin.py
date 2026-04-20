@@ -931,10 +931,24 @@ left, center, right = st.columns([1, 3, 1])
 # ================= LEFT ADS =================
 with left:
     st.markdown("### 📢 Ads")
-    ad_html = """
+
+    ad_html_left = """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9965583211535412"
-    crossorigin="anonymous"></script>"""
-    components.html(ad_html, height=100)
+         crossorigin="anonymous"></script>
+
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9965583211535412"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    """
+
+    components.html(ad_html_left, height=250)
 
 # ================= CENTER =================
 with center:
@@ -1248,13 +1262,24 @@ with center:
         st.info("No peers found for this ticker.")
 
 # ================= RIGHT ADS =================
-import streamlit.components.v1 as components
 
 with right:
- st.markdown("### 📢 Ads")
+    st.markdown("### 📢 Ads")
 
- ad_html = """
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9965583211535412"
- crossorigin="anonymous"></script>"""
+    ad_html_right = """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9965583211535412"
+         crossorigin="anonymous"></script>
 
- components.html(ad_html, height=100)
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9965583211535412"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    """
+
+    components.html(ad_html_right, height=250)
