@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import requests
 from anthropic import Anthropic
-from datetime import datetime
+from datetime import datetime, timezone
 import pytz
 
 # ================= CONFIG =================
@@ -305,9 +305,9 @@ def to_est(unix_ts):
         return "N/A"
     if unix_ts > 10**12:
         unix_ts = unix_ts / 1000
-    utc_time = datetime.utcfromtimestamp(unix_ts)
+    utc_time = datetime.fromtimestamp(unix_ts, tz=timezone.utc)
     est = pytz.timezone("America/New_York")
-    est_time = utc_time.replace(tzinfo=pytz.utc).astimezone(est)
+    est_time = utc_time.astimezone(est)
     return est_time.strftime("%Y-%m-%d %I:%M:%S %p")
 
 
@@ -482,7 +482,7 @@ with center:
             "close": hist["c"]
         })
         fig = px.line(chart_df, x="time", y="close")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
     # ================= NEWS =================
     st.subheader("📰 Top 5 News")
@@ -513,7 +513,7 @@ with center:
     st.subheader("📌 Watchlist Overview")
 
     if not watch_df.empty:
-        st.dataframe(watch_df, use_container_width=True)
+        st.dataframe(watch_df, width='stretch')
 
         fig2 = px.line(
             watch_df,
@@ -521,7 +521,7 @@ with center:
             y="price",
             title="Watchlist Price Comparison"
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width='stretch')
 
     # =================================================================
     # ==================== NEW FEATURE SECTIONS =======================
@@ -555,8 +555,8 @@ with center:
             colour = "green" if val >= 0 else "red"
             return f"color: {colour}"
 
-        styled = port_df.style.applymap(colour_pnl, subset=["P&L ($)", "P&L (%)"])
-        st.dataframe(styled, use_container_width=True)
+        styled = port_df.style.map(colour_pnl, subset=["P&L ($)", "P&L (%)"])
+        st.dataframe(styled, width='stretch')
 
         total_value = port_df["Market Value"].sum()
         total_pnl   = port_df["P&L ($)"].sum()
@@ -597,7 +597,7 @@ with center:
     # Display active alerts
     if st.session_state.price_alerts:
         alerts_df = pd.DataFrame(st.session_state.price_alerts)
-        st.dataframe(alerts_df, use_container_width=True)
+        st.dataframe(alerts_df, width='stretch')
 
         # Check alerts for current ticker
         triggered = check_alerts(ticker, stock["price"])
@@ -641,7 +641,7 @@ with center:
         fig_bb.add_trace(go.Scatter(x=candle_df["time"], y=candle_df["BB_Lower"], name="Lower BB", line=dict(color="#ff4444", dash="dash"),
                                      fill="tonexty", fillcolor="rgba(255,68,68,0.07)"))
         fig_bb.update_layout(title="Bollinger Bands", paper_bgcolor="#000", plot_bgcolor="#000", font_color="#00ff88")
-        st.plotly_chart(fig_bb, use_container_width=True)
+        st.plotly_chart(fig_bb, width='stretch')
 
         # ---- RSI chart ----
         fig_rsi = go.Figure()
@@ -649,7 +649,7 @@ with center:
         fig_rsi.add_hline(y=70, line_dash="dash", line_color="red",    annotation_text="Overbought (70)")
         fig_rsi.add_hline(y=30, line_dash="dash", line_color="#00aaff", annotation_text="Oversold (30)")
         fig_rsi.update_layout(title="RSI (14)", paper_bgcolor="#000", plot_bgcolor="#000", font_color="#00ff88", yaxis=dict(range=[0, 100]))
-        st.plotly_chart(fig_rsi, use_container_width=True)
+        st.plotly_chart(fig_rsi, width='stretch')
 
         # ---- MACD chart ----
         fig_macd = go.Figure()
@@ -658,7 +658,7 @@ with center:
         fig_macd.add_trace(go.Bar(    x=candle_df["time"], y=candle_df["Histogram"], name="Histogram",
                                        marker_color=["#00ff88" if v >= 0 else "#ff4444" for v in candle_df["Histogram"].fillna(0)]))
         fig_macd.update_layout(title="MACD (12/26/9)", paper_bgcolor="#000", plot_bgcolor="#000", font_color="#00ff88")
-        st.plotly_chart(fig_macd, use_container_width=True)
+        st.plotly_chart(fig_macd, width='stretch')
 
         # ---- Quick signal summary ----
         last_rsi  = candle_df["RSI"].dropna().iloc[-1]  if not candle_df["RSI"].dropna().empty  else None
@@ -724,8 +724,8 @@ with center:
             def colour_change(val):
                 return "color: green" if val >= 0 else "color: red"
 
-            styled_peer = peer_df.style.applymap(colour_change, subset=["change"])
-            st.dataframe(styled_peer, use_container_width=True)
+            styled_peer = peer_df.style.map(colour_change, subset=["change"])
+            st.dataframe(styled_peer, width='stretch')
 
             # Bar chart comparison
             fig_peer = go.Figure()
@@ -748,7 +748,7 @@ with center:
                 font_color="#00ff88",
                 yaxis_title="Price (USD)"
             )
-            st.plotly_chart(fig_peer, use_container_width=True)
+            st.plotly_chart(fig_peer, width='stretch')
         else:
             st.info("No live peer data available.")
     else:
