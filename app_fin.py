@@ -10,8 +10,7 @@ import pytz
 # ================= CONFIG =================
 st.set_page_config(page_title="AI Trading Pro", layout="wide")
 
-st.title("📈 Quantum Trade Intelligence Terminal")
-st.caption("Stock Scanner + News + Claude AI Assistant")
+st.markdown("<p style='font-family:DM Mono,monospace;font-size:0.7rem;color:#4b5563;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px'>Stock Scanner · Live Data · AI Assistant</p>", unsafe_allow_html=True)
 
 # ================= KEYS =================
 FINNHUB_KEY = "d7ht4s9r01qu8vfmhv1gd7ht4s9r01qu8vfmhv20"
@@ -19,134 +18,614 @@ CLAUDE_KEY = "YOUR_CLAUDE_API_KEY"
 
 claude = Anthropic(api_key=CLAUDE_KEY)
 
-# ================= STYLE =================
+# ================= BOOTSTRAP 5 + PREMIUM STYLE =================
 st.markdown("""
-<style>
-    .stApp {
-        background-color: #ffffff;
-        color: #111111;
-    }
-</style>
-""", unsafe_allow_html=True)
+<!-- Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-st.markdown("""
 <style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root {
+  --bg-void:       #080a0f;
+  --bg-surface:    #0d1117;
+  --bg-card:       #111620;
+  --bg-elevated:   #161d2b;
+  --border:        rgba(255,255,255,0.06);
+  --border-bright: rgba(255,255,255,0.12);
 
-/* ================= ROOT ================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  --gold:          #d4a843;
+  --gold-light:    #f0c96a;
+  --gold-dim:      rgba(212,168,67,0.15);
+  --gold-glow:     rgba(212,168,67,0.25);
+
+  --green:         #22c55e;
+  --green-dim:     rgba(34,197,94,0.12);
+  --red:           #ef4444;
+  --red-dim:       rgba(239,68,68,0.12);
+  --cyan:          #38bdf8;
+  --cyan-dim:      rgba(56,189,248,0.10);
+
+  --text-primary:  #f0f4ff;
+  --text-secondary:#8892a4;
+  --text-muted:    #4b5563;
+
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     16px;
+  --radius-xl:     22px;
+
+  --font-display:  'Syne', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+
+  --shadow-card:   0 4px 24px rgba(0,0,0,0.5);
+  --shadow-glow:   0 0 28px rgba(212,168,67,0.12);
+}
+
+/* ═══════════════════════════════════════
+   GLOBAL RESET & BASE
+═══════════════════════════════════════ */
+* { box-sizing: border-box; }
 
 .stApp {
-    background: radial-gradient(circle at top, #050505 0%, #000000 100%);
-    color: #00ff88;
-    font-family: 'Inter', sans-serif;
+  background: var(--bg-void) !important;
+  font-family: var(--font-display) !important;
+  color: var(--text-primary) !important;
 }
 
-/* ================= MAIN CONTAINER ================= */
+/* animated mesh background */
+.stApp::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 0%, rgba(212,168,67,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(56,189,248,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════
+   STREAMLIT STRUCTURAL OVERRIDES
+═══════════════════════════════════════ */
 .block-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 2rem;
-    background: rgba(10, 10, 10, 0.85);
-    border-radius: 16px;
-    border: 1px solid rgba(0, 255, 136, 0.15);
-    box-shadow: 0 0 30px rgba(0, 255, 136, 0.08);
+  max-width: 1280px !important;
+  padding: 1.5rem 2rem 3rem !important;
+  background: transparent !important;
 }
 
-/* ================= HEADINGS ================= */
+/* hide default streamlit decorations */
+#MainMenu, footer, header { visibility: hidden; }
+.stDeployButton { display: none; }
+
+/* ═══════════════════════════════════════
+   CUSTOM NAV HEADER
+═══════════════════════════════════════ */
+.qti-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+.qti-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+}
+.qti-logo span { color: var(--gold); }
+.qti-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+  letter-spacing: 0.05em;
+}
+.qti-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+.qti-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ═══════════════════════════════════════
+   SECTION HEADINGS
+═══════════════════════════════════════ */
 h1 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    color: #00ff88;
-    text-align: center;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(0,255,136,0.3);
+  font-family: var(--font-display) !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -1px !important;
+  text-align: left !important;
+  margin-bottom: 0 !important;
 }
 
 h2, h3 {
-    color: #b6ffda;
-    text-align: center;
-    font-weight: 600;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  text-align: left !important;
+  letter-spacing: -0.4px !important;
 }
 
-/* ================= TEXT ================= */
-p, div, span {
-    color: #c9ffe5;
-    font-size: 0.95rem;
+/* section label chips */
+.stSubheader > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--gold) !important;
+  border-bottom: 1px solid rgba(212,168,67,0.25);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-/* ================= METRICS ================= */
+/* ═══════════════════════════════════════
+   METRIC CARDS
+═══════════════════════════════════════ */
 div[data-testid="stMetric"] {
-    background: rgba(0, 255, 136, 0.05);
-    border: 1px solid rgba(0, 255, 136, 0.2);
-    padding: 14px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,255,136,0.08);
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 18px 20px !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+div[data-testid="stMetric"]::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+div[data-testid="stMetric"]:hover {
+  border-color: rgba(212,168,67,0.3) !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+div[data-testid="stMetricLabel"] > div {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+div[data-testid="stMetricValue"] > div {
+  font-family: var(--font-mono) !important;
+  font-size: 1.55rem !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.5px !important;
+}
+div[data-testid="stMetricDelta"] > div {
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
 }
 
-div[data-testid="stMetricLabel"] {
-    color: #7ef9b6;
-    font-size: 0.85rem;
+/* ═══════════════════════════════════════
+   INPUTS & SELECTS
+═══════════════════════════════════════ */
+input, textarea, select,
+div[data-baseweb="input"] input,
+div[data-baseweb="textarea"] textarea {
+  background: var(--bg-elevated) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: var(--radius-md) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.9rem !important;
+  padding: 10px 14px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+input:focus, textarea:focus {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 0 3px var(--gold-dim) !important;
+  outline: none !important;
 }
 
-div[data-testid="stMetricValue"] {
-    color: #00ff88;
-    font-size: 1.3rem;
-    font-weight: 700;
+div[data-baseweb="select"] > div {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--text-primary) !important;
 }
 
-/* ================= INPUT BOX ================= */
-input {
-    background-color: #000 !important;
-    color: #00ff88 !important;
-    border: 1px solid rgba(0,255,136,0.3) !important;
-    border-radius: 10px !important;
-    padding: 10px !important;
+/* input labels */
+label, .stTextInput label, .stNumberInput label,
+.stSelectbox label, .stRadio label p {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 4px !important;
 }
 
-/* ================= BUTTON ================= */
-button {
-    background: linear-gradient(90deg, #00ff88, #00cc66) !important;
-    color: #000 !important;
-    font-weight: 700 !important;
-    border-radius: 10px !important;
-    border: none !important;
-    transition: 0.2s ease-in-out;
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+div[data-testid="stButton"] > button,
+button[kind="primary"],
+button[kind="secondary"] {
+  background: linear-gradient(135deg, #c9951e 0%, var(--gold) 60%, var(--gold-light) 100%) !important;
+  color: #080a0f !important;
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.04em !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: 10px 22px !important;
+  box-shadow: 0 4px 14px rgba(212,168,67,0.3) !important;
+  transition: all 0.2s ease !important;
+  text-transform: uppercase !important;
+}
+div[data-testid="stButton"] > button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(212,168,67,0.45) !important;
+}
+div[data-testid="stButton"] > button:active {
+  transform: translateY(0) !important;
 }
 
-button:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 15px rgba(0,255,136,0.4);
+/* ═══════════════════════════════════════
+   ALERT BOXES (success / error / info / warning)
+═══════════════════════════════════════ */
+div[data-testid="stAlert"] {
+  border-radius: var(--radius-md) !important;
+  border-width: 1px !important;
+  border-left-width: 3px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem !important;
+}
+div[data-testid="stAlert"][data-type="success"] {
+  background: var(--green-dim) !important;
+  border-color: var(--green) !important;
+  color: #86efac !important;
+}
+div[data-testid="stAlert"][data-type="error"] {
+  background: var(--red-dim) !important;
+  border-color: var(--red) !important;
+  color: #fca5a5 !important;
+}
+div[data-testid="stAlert"][data-type="info"] {
+  background: var(--cyan-dim) !important;
+  border-color: var(--cyan) !important;
+  color: #7dd3fc !important;
+}
+div[data-testid="stAlert"][data-type="warning"] {
+  background: var(--gold-dim) !important;
+  border-color: var(--gold) !important;
+  color: var(--gold-light) !important;
 }
 
-/* ================= DATA TABLE ================= */
-table {
-    background: #000 !important;
-    color: #00ff88 !important;
-    border: 1px solid rgba(0,255,136,0.2);
+/* ═══════════════════════════════════════
+   DATA TABLES
+═══════════════════════════════════════ */
+div[data-testid="stDataFrame"],
+div[data-testid="stDataFrameResizable"] {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-card) !important;
+}
+/* table header row */
+div[data-testid="stDataFrame"] th,
+.dvn-scroller th {
+  background: var(--bg-elevated) !important;
+  color: var(--gold) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--border-bright) !important;
+}
+div[data-testid="stDataFrame"] td,
+.dvn-scroller td {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.82rem !important;
+  padding: 9px 14px !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+div[data-testid="stDataFrame"] tr:hover td {
+  background: var(--bg-elevated) !important;
 }
 
-/* ================= SIDEBAR / ADS ================= */
-.css-1d391kg {
-    background-color: #000 !important;
+/* ═══════════════════════════════════════
+   PLOTLY CHARTS
+═══════════════════════════════════════ */
+.js-plotly-plot, .plot-container {
+  background: transparent !important;
+  border-radius: var(--radius-lg) !important;
+}
+.plotly .bg { fill: transparent !important; }
+
+/* ═══════════════════════════════════════
+   EXPANDERS
+═══════════════════════════════════════ */
+details {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 4px 0 !important;
+  margin-bottom: 10px !important;
+}
+details summary {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  color: var(--text-primary) !important;
+  padding: 12px 18px !important;
+  cursor: pointer !important;
+}
+details[open] summary {
+  color: var(--gold) !important;
+  border-bottom: 1px solid var(--border) !important;
+  margin-bottom: 12px !important;
+}
+details > div {
+  padding: 0 18px 14px !important;
 }
 
-/* ================= CHART ================= */
-.js-plotly-plot {
-    background: #000 !important;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,255,136,0.08);
+/* ═══════════════════════════════════════
+   RADIO BUTTONS (currency toggle)
+═══════════════════════════════════════ */
+div[data-testid="stRadio"] > div {
+  display: flex;
+  gap: 8px;
+}
+div[data-testid="stRadio"] label {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: var(--radius-md) !important;
+  padding: 8px 18px !important;
+  cursor: pointer !important;
+  color: var(--text-secondary) !important;
+  font-size: 0.82rem !important;
+  transition: all 0.15s !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+div[data-testid="stRadio"] label:has(input:checked) {
+  background: var(--gold-dim) !important;
+  border-color: var(--gold) !important;
+  color: var(--gold-light) !important;
 }
 
-/* ================= LINKS ================= */
-a {
-    color: #00ff88 !important;
+/* ═══════════════════════════════════════
+   DIVIDER
+═══════════════════════════════════════ */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--border) !important;
+  margin: 2rem 0 !important;
 }
 
-a:hover {
-    color: #7CFFB2 !important;
+/* ═══════════════════════════════════════
+   LINKS
+═══════════════════════════════════════ */
+a { color: var(--gold) !important; text-decoration: none !important; }
+a:hover { color: var(--gold-light) !important; text-decoration: underline !important; }
+
+/* ═══════════════════════════════════════
+   AD PANEL
+═══════════════════════════════════════ */
+.ad-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 14px;
+  text-align: center;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
 }
+.ad-panel .ad-placeholder {
+  width: 100%;
+  height: 140px;
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border-bright);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  margin-top: 10px;
+}
+
+/* ═══════════════════════════════════════
+   SIGNAL BADGE OVERRIDES
+═══════════════════════════════════════ */
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  margin: 6px 0 12px;
+  text-transform: uppercase;
+}
+.signal-buy  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+.signal-sell { background: var(--red-dim);   color: var(--red);   border: 1px solid rgba(239,68,68,0.3); }
+.signal-hold { background: var(--gold-dim);  color: var(--gold);  border: 1px solid rgba(212,168,67,0.3); }
+
+/* ═══════════════════════════════════════
+   NUMBER INPUT SPINNERS
+═══════════════════════════════════════ */
+div[data-baseweb="number-input"] button {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-bright) !important;
+  color: var(--text-secondary) !important;
+  padding: 4px 8px !important;
+  font-size: 0.9rem !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+div[data-baseweb="number-input"] button:hover {
+  background: var(--bg-card) !important;
+  color: var(--gold) !important;
+  transform: none !important;
+}
+
+/* ═══════════════════════════════════════
+   SELECTBOX DROPDOWN
+═══════════════════════════════════════ */
+div[data-baseweb="popover"] ul {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-bright) !important;
+  border-radius: var(--radius-md) !important;
+}
+div[data-baseweb="popover"] li {
+  color: var(--text-primary) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.85rem !important;
+}
+div[data-baseweb="popover"] li:hover,
+div[data-baseweb="popover"] li[aria-selected="true"] {
+  background: var(--gold-dim) !important;
+  color: var(--gold-light) !important;
+}
+
+/* ═══════════════════════════════════════
+   CAPTION / FOOTER TEXT
+═══════════════════════════════════════ */
+.stCaption, .stCaption p {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ═══════════════════════════════════════
+   MARKDOWN TEXT
+═══════════════════════════════════════ */
+.stMarkdown p, .stMarkdown li {
+  color: var(--text-secondary) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.65 !important;
+}
+.stMarkdown strong {
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+.stMarkdown h4 {
+  color: var(--gold) !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  margin: 1.2rem 0 0.5rem !important;
+}
+
+/* ═══════════════════════════════════════
+   NEWS CARD CUSTOM
+═══════════════════════════════════════ */
+.news-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.news-card:hover {
+  background: var(--bg-elevated);
+  border-color: rgba(212,168,67,0.5);
+}
+.news-card a {
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  color: var(--text-primary) !important;
+  line-height: 1.45 !important;
+}
+.news-card a:hover { color: var(--gold-light) !important; }
+.news-meta {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ═══════════════════════════════════════
+   SECTION WRAPPER CARD
+═══════════════════════════════════════ */
+.section-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+/* ═══════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-void); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
 
 </style>
+""", unsafe_allow_html=True)
+
+# ─── Premium Navbar ───────────────────────────────────────────────
+st.markdown("""
+<div class="qti-navbar">
+  <div class="qti-logo">Quantum <span>Trade</span> Intelligence</div>
+  <div class="qti-badge">TERMINAL v2.0</div>
+  <div class="qti-pill">
+    <div class="qti-dot"></div>
+    Markets Open
+  </div>
+</div>
 """, unsafe_allow_html=True)
 
 # ================= TOP MODE (CAD / USD) =================
