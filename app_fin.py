@@ -7,7 +7,10 @@ from anthropic import Anthropic
 from datetime import datetime, timezone
 import pytz
 import streamlit.components.v1 as components
-
+st.markdown("""
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9965583211535412"
+     crossorigin="anonymous"></script>
+""", unsafe_allow_html=True)
 # ================= CONFIG =================
 st.set_page_config(page_title="AI Trading Pro", layout="wide")
 
