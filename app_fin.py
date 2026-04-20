@@ -844,34 +844,44 @@ def check_alerts(current_ticker, current_price):
 
 # -------- 3. TECHNICAL INDICATORS --------
 def get_candle_data(symbol, resolution="60", bars=100):
-    """Fetch recent OHLCV candles from Finnhub."""
+    """Fetch OHLCV candles from Finnhub safely."""
     import time
-    now   = int(time.time())
-    start = now - bars * 3600  # rough lookback
-    url   = "https://finnhub.io/api/v1/stock/candle"
+    now = int(time.time())
+    # resolution is in minutes for "60", "15", etc.
+    try:
+        interval_seconds = int(resolution) * 60
+    except:
+        interval_seconds = 60 * 60  # fallback 1 hour
+    start = now - bars * interval_seconds
+    url = "https://finnhub.io/api/v1/stock/candle"
     params = {
-        "symbol":     symbol,
+        "symbol": symbol,
         "resolution": resolution,
-        "from":       start,
-        "to":         now,
-        "token":      FINNHUB_KEY,
+        "from": start,
+        "to": now,
+        "token": FINNHUB_KEY,
     }
     try:
-        res = requests.get(url, params=params).json()
-    except:
+        res = requests.get(url, params=params, timeout=10).json()
+    except Exception as e:
+        print("API error:", e)
         return None
-    if res.get("s") != "ok":
+    # validate response
+    if not isinstance(res, dict) or res.get("s") != "ok":
+        print("No candle data:", res)
+        return None
+    if "t" not in res or len(res["t"]) == 0:
         return None
     df = pd.DataFrame({
-        "time":   pd.to_datetime(res["t"], unit="s"),
-        "open":   res["o"],
-        "high":   res["h"],
-        "low":    res["l"],
-        "close":  res["c"],
+        "time": pd.to_datetime(res["t"], unit="s"),
+        "open": res["o"],
+        "high": res["h"],
+        "low": res["l"],
+        "close": res["c"],
         "volume": res["v"],
     })
     return df
-
+   
 def compute_rsi(series, period=14):
     delta = series.diff()
     gain  = delta.clip(lower=0).rolling(period).mean()
