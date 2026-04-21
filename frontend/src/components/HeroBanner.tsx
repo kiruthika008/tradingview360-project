@@ -56,7 +56,7 @@ export default function HeroBanner() {
           {/* Eyebrow */}
           <div style={{
             display:"inline-flex", alignItems:"center", gap:8,
-            fontFamily:"'DM Mono',monospace", fontSize:"0.68rem", fontWeight:500,
+            fontFamily:"var(--font-mono)", fontSize:"0.68rem", fontWeight:500,
             letterSpacing:"0.12em", textTransform:"uppercase",
             color:"var(--gold)", marginBottom:14,
           }}>
@@ -67,7 +67,7 @@ export default function HeroBanner() {
 
           {/* Main headline */}
           <h1 style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800,
+            fontFamily:"var(--font-sans)", fontWeight:800,
             fontSize:"clamp(1.6rem, 3vw, 2.4rem)",
             lineHeight:1.15, letterSpacing:"-1px",
             color:"var(--text-primary)", marginBottom:14,
@@ -84,7 +84,7 @@ export default function HeroBanner() {
 
           {/* Sub-copy */}
           <p style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.88rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.88rem",
             color:"var(--text-secondary)", lineHeight:1.7, maxWidth:560,
           }}>
             Get institutional-grade analysis without the $300/month price tag. Search any ticker,
@@ -102,14 +102,14 @@ export default function HeroBanner() {
           flexShrink:0,
         }}>
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.65rem",
             color:"var(--text-muted)", letterSpacing:"0.1em",
             textTransform:"uppercase", marginBottom:10,
           }}>
             Now tracking
           </div>
           <div style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800,
+            fontFamily:"var(--font-sans)", fontWeight:800,
             fontSize:"1.8rem", letterSpacing:"-1px",
             color:"var(--gold)",
             opacity: visible ? 1 : 0,
@@ -119,7 +119,7 @@ export default function HeroBanner() {
             {TICKERS[tickerIdx]}
           </div>
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.65rem",
             color:"var(--text-muted)", letterSpacing:"0.06em", marginTop:8,
           }}>
             + thousands more
@@ -134,7 +134,7 @@ export default function HeroBanner() {
             display:"flex", alignItems:"center", gap:8,
             background:"var(--bg-elevated)", border:"1px solid var(--border-bright)",
             borderRadius:8, padding:"7px 14px",
-            fontFamily:"'DM Mono',monospace", fontSize:"0.74rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.74rem",
           }}>
             <span style={{ fontSize:"0.9rem" }}>{f.icon}</span>
             <span style={{ color:"var(--text-primary)", fontWeight:500 }}>{f.label}</span>
@@ -171,13 +171,13 @@ export default function HeroBanner() {
           }}>
             <div style={{ fontSize:"1.1rem", marginBottom:6 }}>{v.icon}</div>
             <div style={{
-              fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"0.85rem",
+              fontFamily:"var(--font-sans)", fontWeight:700, fontSize:"0.85rem",
               color:"var(--text-primary)", marginBottom:6,
             }}>
               {v.title}
             </div>
             <div style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.74rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.74rem",
               color:"var(--text-secondary)", lineHeight:1.6,
             }}>
               {v.body}
@@ -191,7 +191,7 @@ export default function HeroBanner() {
         marginTop:18, padding:"8px 14px",
         background:"rgba(212,168,67,0.06)", border:"1px solid rgba(212,168,67,0.15)",
         borderRadius:8,
-        fontFamily:"'DM Mono',monospace", fontSize:"0.68rem",
+        fontFamily:"var(--font-mono)", fontSize:"0.68rem",
         color:"var(--text-muted)", lineHeight:1.5,
       }}>
         ⚠ <strong style={{ color:"var(--gold)" }}>Not financial advice.</strong>{" "}

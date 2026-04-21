@@ -41,7 +41,7 @@ export default function Watchlist({ formatPrice }: { formatPrice: (v: number) =>
       </div>
 
       {data.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem", textAlign:"center", padding:"16px 0" }}>
+        <p style={{ color:"var(--text-muted)", fontFamily:"var(--font-mono)", fontSize:"0.8rem", textAlign:"center", padding:"16px 0" }}>
           Enter tickers and click Scan.
         </p>
       ) : (

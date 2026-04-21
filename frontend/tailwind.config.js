@@ -8,24 +8,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Syne'", "sans-serif"],
-        mono: ["'DM Mono'", "monospace"],
+        sans: ["'Inter'", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["'JetBrains Mono'", "'Fira Code'", "monospace"],
       },
       colors: {
-        void: "#080a0f",
-        surface: "#0d1117",
-        card: "#111620",
-        elevated: "#161d2b",
-        gold: {
-          DEFAULT: "#d4a843",
-          light: "#f0c96a",
-          dim: "rgba(212,168,67,0.15)",
-        },
-        signal: {
-          green: "#22c55e",
-          red: "#ef4444",
-          cyan: "#38bdf8",
-        },
+        void:    "#06080d",
+        surface: "#0b0f18",
+        card:    "#0f1420",
+        elevated:"#141a28",
+        gold: { DEFAULT:"#c9a227", light:"#e8bf5a", dim:"rgba(201,162,39,0.13)" },
+        signal: { green:"#22c55e", red:"#ef4444", cyan:"#0ea5e9" },
       },
     },
   },

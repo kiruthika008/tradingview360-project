@@ -64,13 +64,13 @@ export default function Footer() {
             background:"var(--bg-card)", padding:"18px 20px", textAlign:"center",
           }}>
             <div style={{
-              fontFamily:"'Syne',sans-serif", fontWeight:800,
+              fontFamily:"var(--font-sans)", fontWeight:800,
               fontSize:"1.45rem", color:"var(--gold)", letterSpacing:"-0.5px",
             }}>
               {s.value}
             </div>
             <div style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.68rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.68rem",
               color:"var(--text-muted)", letterSpacing:"0.08em",
               textTransform:"uppercase", marginTop:4,
             }}>
@@ -86,13 +86,13 @@ export default function Footer() {
         {/* Brand column */}
         <div>
           <div style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800,
+            fontFamily:"var(--font-sans)", fontWeight:800,
             fontSize:"1.15rem", color:"var(--text-primary)", marginBottom:12,
           }}>
             Quantum <span style={{ color:"var(--gold)" }}>Trade</span> Intelligence
           </div>
           <p style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.78rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.78rem",
             color:"var(--text-secondary)", lineHeight:1.7, marginBottom:20,
           }}>
             A free, AI-powered stock terminal for everyday investors in the US and Canada.
@@ -105,21 +105,21 @@ export default function Footer() {
             borderRadius:10, padding:"16px",
           }}>
             <div style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.68rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.68rem",
               color:"var(--gold)", letterSpacing:"0.1em", textTransform:"uppercase",
               marginBottom:10,
             }}>
               📬 Market Updates
             </div>
             <p style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.74rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.74rem",
               color:"var(--text-muted)", marginBottom:10, lineHeight:1.5,
             }}>
               Get weekly market signals and feature updates. No spam, ever.
             </p>
             {done ? (
               <div style={{
-                fontFamily:"'DM Mono',monospace", fontSize:"0.78rem",
+                fontFamily:"var(--font-mono)", fontSize:"0.78rem",
                 color:"var(--green)", padding:"8px 0",
               }}>
                 ✓ You're subscribed!
@@ -150,7 +150,7 @@ export default function Footer() {
         {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
           <div key={heading}>
             <div style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.65rem",
               fontWeight:500, letterSpacing:"0.12em", textTransform:"uppercase",
               color:"var(--gold)", marginBottom:14,
               paddingBottom:8, borderBottom:"1px solid rgba(212,168,67,0.2)",
@@ -161,7 +161,7 @@ export default function Footer() {
               {links.map(l => (
                 <li key={l.label}>
                   <Link href={l.href} style={{
-                    fontFamily:"'DM Mono',monospace", fontSize:"0.76rem",
+                    fontFamily:"var(--font-mono)", fontSize:"0.76rem",
                     color:"var(--text-secondary)", textDecoration:"none",
                     transition:"color 0.15s",
                   }}
@@ -182,7 +182,7 @@ export default function Footer() {
         background:"var(--bg-card)", border:"1px solid var(--border)",
         borderLeft:"3px solid rgba(212,168,67,0.4)",
         borderRadius:10, padding:"18px 20px", marginBottom:28,
-        fontFamily:"'DM Mono',monospace", fontSize:"0.72rem",
+        fontFamily:"var(--font-mono)", fontSize:"0.72rem",
         color:"var(--text-muted)", lineHeight:1.8,
       }}>
         <strong style={{ color:"var(--gold)", display:"block", marginBottom:6, fontSize:"0.74rem", letterSpacing:"0.06em" }}>
@@ -206,7 +206,7 @@ export default function Footer() {
         paddingTop:20, borderTop:"1px solid var(--border)",
       }}>
         <div style={{
-          fontFamily:"'DM Mono',monospace", fontSize:"0.66rem",
+          fontFamily:"var(--font-mono)", fontSize:"0.66rem",
           color:"var(--text-muted)", letterSpacing:"0.06em",
         }}>
           © {new Date().getFullYear()} Quantum Trade Intelligence · All rights reserved ·
@@ -224,7 +224,7 @@ export default function Footer() {
             { label:"Contact",    href:"/contact"     },
           ].map(l => (
             <Link key={l.label} href={l.href} style={{
-              fontFamily:"'DM Mono',monospace", fontSize:"0.66rem",
+              fontFamily:"var(--font-mono)", fontSize:"0.66rem",
               color:"var(--text-muted)", textDecoration:"none",
               transition:"color 0.15s",
             }}

@@ -36,7 +36,7 @@ export default function PriceAlerts({
         <div key={i} style={{
           background:"rgba(239,68,68,0.1)", border:"1px solid rgba(239,68,68,0.4)",
           borderRadius:8, padding:"10px 14px", marginBottom:10,
-          fontFamily:"'DM Mono',monospace", fontSize:"0.8rem", color:"#fca5a5",
+          fontFamily:"var(--font-mono)", fontSize:"0.8rem", color:"#fca5a5",
         }}>
           🚨 <strong>{a.ticker}</strong> is {a.direction} ${a.target.toFixed(2)} — Current: {formatPrice(currentPrice)}
         </div>
@@ -49,11 +49,11 @@ export default function PriceAlerts({
       }}>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr auto", gap:10, alignItems:"end" }}>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Ticker</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Ticker</label>
             <input className="qti-input" value={sym} onChange={e => setSym(e.target.value.toUpperCase())} />
           </div>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Direction</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Direction</label>
             <select
               className="qti-input"
               value={direction}
@@ -65,7 +65,7 @@ export default function PriceAlerts({
             </select>
           </div>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Target (USD)</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Target (USD)</label>
             <input className="qti-input" type="number" min="0.01" step="0.01" value={target} onChange={e => setTarget(+e.target.value)} />
           </div>
           <button className="qti-btn" onClick={addAlert} style={{ height:42 }}>Set</button>
@@ -73,7 +73,7 @@ export default function PriceAlerts({
       </div>
 
       {alerts.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem", textAlign:"center", padding:"16px 0" }}>
+        <p style={{ color:"var(--text-muted)", fontFamily:"var(--font-mono)", fontSize:"0.8rem", textAlign:"center", padding:"16px 0" }}>
           No alerts set.
         </p>
       ) : (

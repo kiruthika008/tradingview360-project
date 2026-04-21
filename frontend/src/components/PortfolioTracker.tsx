@@ -76,20 +76,20 @@ export default function PortfolioTracker({
         background: "var(--bg-elevated)", border: "1px solid var(--border)",
         borderRadius: 10, padding: "16px 18px", marginBottom: 16,
       }}>
-        <p style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.7rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:12 }}>
+        <p style={{ fontFamily:"var(--font-mono)", fontSize:"0.7rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:12 }}>
           Add / Update Position
         </p>
         <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr auto", gap:10, alignItems:"end" }}>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Ticker</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Ticker</label>
             <input className="qti-input" value={sym} onChange={e => setSym(e.target.value.toUpperCase())} placeholder="AAPL" />
           </div>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Shares</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Shares</label>
             <input className="qti-input" type="number" min="0.01" step="0.01" value={shares} onChange={e => setShares(+e.target.value)} />
           </div>
           <div>
-            <label style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Avg Cost (USD)</label>
+            <label style={{ fontFamily:"var(--font-mono)", fontSize:"0.67rem", color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase", display:"block", marginBottom:4 }}>Avg Cost (USD)</label>
             <input className="qti-input" type="number" min="0.01" step="0.01" value={cost} onChange={e => setCost(+e.target.value)} />
           </div>
           <button className="qti-btn" onClick={addPosition} disabled={adding} style={{ height:42 }}>
@@ -99,7 +99,7 @@ export default function PortfolioTracker({
       </div>
 
       {rows.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem", textAlign:"center", padding:"24px 0" }}>
+        <p style={{ color:"var(--text-muted)", fontFamily:"var(--font-mono)", fontSize:"0.8rem", textAlign:"center", padding:"24px 0" }}>
           No positions yet. Add a ticker above.
         </p>
       ) : (

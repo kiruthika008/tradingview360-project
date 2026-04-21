@@ -29,7 +29,7 @@ export default function AboutPage() {
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
         <div style={{
-          fontFamily:"'DM Mono',monospace", fontSize:"0.7rem",
+          fontFamily:"var(--font-mono)", fontSize:"0.7rem",
           color:"var(--text-muted)", marginBottom:24, display:"flex", gap:8, alignItems:"center",
         }}>
           <Link href="/" style={{ color:"var(--gold)", textDecoration:"none" }}>Home</Link>
@@ -49,13 +49,13 @@ export default function AboutPage() {
             pointerEvents:"none",
           }} />
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.65rem",
             color:"var(--gold)", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:14,
           }}>
             Our Story
           </div>
           <h1 style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800,
+            fontFamily:"var(--font-sans)", fontWeight:800,
             fontSize:"clamp(1.8rem, 3vw, 2.6rem)",
             letterSpacing:"-1px", color:"var(--text-primary)",
             lineHeight:1.15, marginBottom:20,
@@ -66,7 +66,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.88rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.88rem",
             color:"var(--text-secondary)", lineHeight:1.8, maxWidth:600,
           }}>
             QTI was built out of frustration. Professional traders get Bloomberg terminals.
@@ -99,13 +99,13 @@ export default function AboutPage() {
               >
                 <div style={{ fontSize:"1.6rem", marginBottom:10 }}>{v.icon}</div>
                 <div style={{
-                  fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"0.88rem",
+                  fontFamily:"var(--font-sans)", fontWeight:700, fontSize:"0.88rem",
                   color:"var(--text-primary)", marginBottom:8,
                 }}>
                   {v.title}
                 </div>
                 <div style={{
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.74rem",
+                  fontFamily:"var(--font-mono)", fontSize:"0.74rem",
                   color:"var(--text-secondary)", lineHeight:1.65,
                 }}>
                   {v.desc}
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 {/* Timeline spine */}
                 <div style={{ display:"flex", flexDirection:"column", alignItems:"center", flexShrink:0, width:80 }}>
                   <div style={{
-                    fontFamily:"'DM Mono',monospace", fontSize:"0.68rem",
+                    fontFamily:"var(--font-mono)", fontSize:"0.68rem",
                     color:"var(--gold)", fontWeight:500, textAlign:"right",
                     paddingTop:18, width:"100%",
                   }}>
@@ -149,13 +149,13 @@ export default function AboutPage() {
                   margin:"12px 0", flex:1,
                 }}>
                   <div style={{
-                    fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"0.9rem",
+                    fontFamily:"var(--font-sans)", fontWeight:700, fontSize:"0.9rem",
                     color:"var(--text-primary)", marginBottom:6,
                   }}>
                     {t.title}
                   </div>
                   <div style={{
-                    fontFamily:"'DM Mono',monospace", fontSize:"0.76rem",
+                    fontFamily:"var(--font-mono)", fontSize:"0.76rem",
                     color:"var(--text-secondary)", lineHeight:1.6,
                   }}>
                     {t.desc}
@@ -172,13 +172,13 @@ export default function AboutPage() {
           borderRadius:16, padding:"32px 36px", textAlign:"center", marginBottom:40,
         }}>
           <div style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:"1.3rem",
+            fontFamily:"var(--font-sans)", fontWeight:800, fontSize:"1.3rem",
             color:"var(--text-primary)", marginBottom:12,
           }}>
             Ready to start trading smarter?
           </div>
           <p style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.8rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.8rem",
             color:"var(--text-secondary)", marginBottom:20, lineHeight:1.6,
           }}>
             No signup. No credit card. Just search a ticker and get instant AI-powered analysis.

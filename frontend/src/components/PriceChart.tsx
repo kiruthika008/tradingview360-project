@@ -57,7 +57,7 @@ export default function PriceChart({ symbol }: Props) {
           <div className="spinner" />
         </div>
       ) : data.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", textAlign:"center", padding:"48px 0", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem" }}>
+        <p style={{ color:"var(--text-muted)", textAlign:"center", padding:"48px 0", fontFamily:"var(--font-mono)", fontSize:"0.8rem" }}>
           No chart data available
         </p>
       ) : (
@@ -67,13 +67,13 @@ export default function PriceChart({ symbol }: Props) {
             <XAxis
               dataKey="time"
               tickFormatter={fmt}
-              tick={{ fill:"var(--text-muted)", fontSize:10, fontFamily:"'DM Mono',monospace" }}
+              tick={{ fill:"var(--text-muted)", fontSize:10, fontFamily:"var(--font-mono)" }}
               axisLine={false} tickLine={false}
               interval="preserveStartEnd"
             />
             <YAxis
               domain={["auto","auto"]}
-              tick={{ fill:"var(--text-muted)", fontSize:10, fontFamily:"'DM Mono',monospace" }}
+              tick={{ fill:"var(--text-muted)", fontSize:10, fontFamily:"var(--font-mono)" }}
               axisLine={false} tickLine={false}
               tickFormatter={(v) => `$${v.toFixed(0)}`}
               width={56}
@@ -81,7 +81,7 @@ export default function PriceChart({ symbol }: Props) {
             <Tooltip
               contentStyle={{
                 background:"var(--bg-elevated)", border:"1px solid var(--border-bright)",
-                borderRadius:8, fontFamily:"'DM Mono',monospace", fontSize:"0.78rem",
+                borderRadius:8, fontFamily:"var(--font-mono)", fontSize:"0.78rem",
               }}
               labelStyle={{ color:"var(--text-muted)", marginBottom:4 }}
               itemStyle={{ color:"var(--gold)" }}

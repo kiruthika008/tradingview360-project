@@ -25,13 +25,13 @@ export default function Navbar() {
       boxShadow: "0 4px 24px rgba(0,0,0,0.5)",
     }}>
       {/* Logo */}
-      <div style={{ fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:"1.2rem", letterSpacing:"-0.5px" }}>
+      <div style={{ fontFamily:"var(--font-sans)", fontWeight:800, fontSize:"1.2rem", letterSpacing:"-0.5px" }}>
         Quantum <span style={{ color:"var(--gold)" }}>Trade</span> Intelligence
       </div>
 
       {/* Centre badge */}
       <div style={{
-        fontFamily:"'DM Mono',monospace", fontSize:"0.68rem",
+        fontFamily:"var(--font-mono)", fontSize:"0.68rem",
         background:"var(--gold-dim)", color:"var(--gold)",
         border:"1px solid rgba(212,168,67,0.3)", borderRadius:"20px",
         padding:"3px 12px", letterSpacing:"0.06em",
@@ -41,7 +41,7 @@ export default function Navbar() {
 
       {/* Right pill */}
       <div style={{ display:"flex", alignItems:"center", gap:12 }}>
-        <span style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.72rem", color:"var(--text-muted)" }}>
+        <span style={{ fontFamily:"var(--font-mono)", fontSize:"0.72rem", color:"var(--text-muted)" }}>
           EST {time}
         </span>
         <div style={{

@@ -75,7 +75,7 @@ export default function ContactPage() {
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
         <div style={{
-          fontFamily:"'DM Mono',monospace", fontSize:"0.7rem",
+          fontFamily:"var(--font-mono)", fontSize:"0.7rem",
           color:"var(--text-muted)", marginBottom:24, display:"flex", gap:8, alignItems:"center",
         }}>
           <Link href="/" style={{ color:"var(--gold)", textDecoration:"none" }}>Home</Link>
@@ -95,19 +95,19 @@ export default function ContactPage() {
             pointerEvents:"none",
           }} />
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.65rem",
             color:"var(--gold)", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:12,
           }}>
             Get In Touch
           </div>
           <h1 style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800, fontSize:"2rem",
+            fontFamily:"var(--font-sans)", fontWeight:800, fontSize:"2rem",
             letterSpacing:"-1px", color:"var(--text-primary)", marginBottom:12,
           }}>
             Contact Us
           </h1>
           <p style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.82rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.82rem",
             color:"var(--text-secondary)", lineHeight:1.7, maxWidth:520,
           }}>
             Have a question, found a bug, or want to suggest a feature?
@@ -137,15 +137,15 @@ export default function ContactPage() {
               <span style={{ fontSize:"1.4rem", flexShrink:0 }}>{c.icon}</span>
               <div>
                 <div style={{
-                  fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"0.88rem",
+                  fontFamily:"var(--font-sans)", fontWeight:700, fontSize:"0.88rem",
                   color:"var(--text-primary)", marginBottom:4,
                 }}>{c.title}</div>
                 <div style={{
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.76rem",
+                  fontFamily:"var(--font-mono)", fontSize:"0.76rem",
                   color:"var(--gold)", marginBottom:6,
                 }}>{c.detail}</div>
                 <div style={{
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.72rem",
+                  fontFamily:"var(--font-mono)", fontSize:"0.72rem",
                   color:"var(--text-muted)", lineHeight:1.5,
                 }}>{c.desc}</div>
               </div>
@@ -168,13 +168,13 @@ export default function ContactPage() {
             }}>
               <div style={{ fontSize:"2.5rem", marginBottom:16 }}>✅</div>
               <div style={{
-                fontFamily:"'Syne',sans-serif", fontWeight:700, fontSize:"1.1rem",
+                fontFamily:"var(--font-sans)", fontWeight:700, fontSize:"1.1rem",
                 color:"var(--green)", marginBottom:10,
               }}>
                 Message Sent!
               </div>
               <p style={{
-                fontFamily:"'DM Mono',monospace", fontSize:"0.8rem",
+                fontFamily:"var(--font-mono)", fontSize:"0.8rem",
                 color:"var(--text-secondary)", lineHeight:1.6,
               }}>
                 Thanks for reaching out, {form.name}. We'll get back to you at {form.email} within 1–2 business days.
@@ -186,7 +186,7 @@ export default function ContactPage() {
                 <div style={{
                   background:"rgba(239,68,68,0.1)", border:"1px solid rgba(239,68,68,0.3)",
                   borderRadius:8, padding:"10px 14px",
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.78rem", color:"#fca5a5",
+                  fontFamily:"var(--font-mono)", fontSize:"0.78rem", color:"#fca5a5",
                 }}>
                   ⚠ {error}
                 </div>
@@ -195,7 +195,7 @@ export default function ContactPage() {
               <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14 }}>
                 <div>
                   <label style={{
-                    fontFamily:"'DM Mono',monospace", fontSize:"0.67rem",
+                    fontFamily:"var(--font-mono)", fontSize:"0.67rem",
                     color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase",
                     display:"block", marginBottom:6,
                   }}>
@@ -211,7 +211,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label style={{
-                    fontFamily:"'DM Mono',monospace", fontSize:"0.67rem",
+                    fontFamily:"var(--font-mono)", fontSize:"0.67rem",
                     color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase",
                     display:"block", marginBottom:6,
                   }}>
@@ -230,7 +230,7 @@ export default function ContactPage() {
 
               <div>
                 <label style={{
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.67rem",
+                  fontFamily:"var(--font-mono)", fontSize:"0.67rem",
                   color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase",
                   display:"block", marginBottom:6,
                 }}>
@@ -249,7 +249,7 @@ export default function ContactPage() {
 
               <div>
                 <label style={{
-                  fontFamily:"'DM Mono',monospace", fontSize:"0.67rem",
+                  fontFamily:"var(--font-mono)", fontSize:"0.67rem",
                   color:"var(--text-muted)", letterSpacing:"0.08em", textTransform:"uppercase",
                   display:"block", marginBottom:6,
                 }}>
@@ -279,7 +279,7 @@ export default function ContactPage() {
         <div style={{
           background:"var(--bg-elevated)", border:"1px solid var(--border)",
           borderRadius:10, padding:"14px 18px", marginBottom:40,
-          fontFamily:"'DM Mono',monospace", fontSize:"0.74rem",
+          fontFamily:"var(--font-mono)", fontSize:"0.74rem",
           color:"var(--text-muted)", lineHeight:1.6,
         }}>
           💡 <strong style={{ color:"var(--text-secondary)" }}>Response times:</strong>{" "}

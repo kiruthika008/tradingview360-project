@@ -18,7 +18,7 @@ export default function AdBanner({ slot, format = "auto", style }: AdBannerProps
   return (
     <div style={{ textAlign: "center", ...style }}>
       <p style={{
-        fontFamily:"'DM Mono',monospace", fontSize:"0.62rem",
+        fontFamily:"var(--font-mono)", fontSize:"0.62rem",
         color:"var(--text-muted)", letterSpacing:"0.1em",
         textTransform:"uppercase", marginBottom:8,
       }}>

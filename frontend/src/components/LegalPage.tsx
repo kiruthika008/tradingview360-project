@@ -20,7 +20,7 @@ export default function LegalPage({ title, eyebrow, lastUpdated, sections }: Pro
       <div style={{ maxWidth:780, margin:"0 auto" }}>
         {/* Breadcrumb */}
         <div style={{
-          fontFamily:"'DM Mono',monospace", fontSize:"0.7rem",
+          fontFamily:"var(--font-mono)", fontSize:"0.7rem",
           color:"var(--text-muted)", marginBottom:24, display:"flex", gap:8, alignItems:"center",
         }}>
           <Link href="/" style={{ color:"var(--gold)", textDecoration:"none" }}>Home</Link>
@@ -41,21 +41,21 @@ export default function LegalPage({ title, eyebrow, lastUpdated, sections }: Pro
             pointerEvents:"none",
           }} />
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.65rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.65rem",
             color:"var(--gold)", letterSpacing:"0.12em", textTransform:"uppercase",
             marginBottom:12,
           }}>
             {eyebrow}
           </div>
           <h1 style={{
-            fontFamily:"'Syne',sans-serif", fontWeight:800,
+            fontFamily:"var(--font-sans)", fontWeight:800,
             fontSize:"2rem", letterSpacing:"-1px",
             color:"var(--text-primary)", marginBottom:12,
           }}>
             {title}
           </h1>
           <div style={{
-            fontFamily:"'DM Mono',monospace", fontSize:"0.72rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.72rem",
             color:"var(--text-muted)",
           }}>
             Last updated: {lastUpdated}
@@ -71,13 +71,13 @@ export default function LegalPage({ title, eyebrow, lastUpdated, sections }: Pro
               padding:"22px 26px",
             }}>
               <h2 style={{
-                fontFamily:"'Syne',sans-serif", fontWeight:700,
+                fontFamily:"var(--font-sans)", fontWeight:700,
                 fontSize:"1rem", color:"var(--text-primary)", marginBottom:12,
               }}>
                 {s.heading}
               </h2>
               <div style={{
-                fontFamily:"'DM Mono',monospace", fontSize:"0.8rem",
+                fontFamily:"var(--font-mono)", fontSize:"0.8rem",
                 color:"var(--text-secondary)", lineHeight:1.8,
               }}>
                 {s.body}

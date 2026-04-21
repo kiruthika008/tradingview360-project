@@ -36,7 +36,7 @@ export default function AIChat({ stockInfo }: { stockInfo: object }) {
         marginBottom:14, paddingRight:4,
       }}>
         {messages.length === 0 && (
-          <p style={{ color:"var(--text-muted)", fontFamily:"'DM Mono',monospace", fontSize:"0.78rem", textAlign:"center", padding:"24px 0" }}>
+          <p style={{ color:"var(--text-muted)", fontFamily:"var(--font-mono)", fontSize:"0.78rem", textAlign:"center", padding:"24px 0" }}>
             Ask about this stock — BUY / SELL / HOLD analysis, risk, earnings…
           </p>
         )}
@@ -50,7 +50,7 @@ export default function AIChat({ stockInfo }: { stockInfo: object }) {
               : "1px solid var(--border-bright)",
             borderRadius: m.role === "user" ? "12px 12px 2px 12px" : "12px 12px 12px 2px",
             padding:"10px 14px",
-            fontFamily:"'DM Mono',monospace", fontSize:"0.82rem",
+            fontFamily:"var(--font-mono)", fontSize:"0.82rem",
             color: m.role === "user" ? "var(--gold-light)" : "var(--text-primary)",
             lineHeight:1.6, whiteSpace:"pre-wrap",
           }}>
@@ -65,7 +65,7 @@ export default function AIChat({ stockInfo }: { stockInfo: object }) {
             display:"flex", alignItems:"center", gap:8,
           }}>
             <div className="spinner" style={{ width:14, height:14, borderWidth:2 }} />
-            <span style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.75rem", color:"var(--text-muted)" }}>
+            <span style={{ fontFamily:"var(--font-mono)", fontSize:"0.75rem", color:"var(--text-muted)" }}>
               Analysing…
             </span>
           </div>

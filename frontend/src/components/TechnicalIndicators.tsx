@@ -62,11 +62,11 @@ function computeBollinger(closes: number[], period = 20, stdDev = 2) {
 }
 
 const ttStyle = {
-  contentStyle: { background:"var(--bg-elevated)", border:"1px solid var(--border-bright)", borderRadius:8, fontFamily:"'DM Mono',monospace", fontSize:"0.75rem" },
+  contentStyle: { background:"var(--bg-elevated)", border:"1px solid var(--border-bright)", borderRadius:8, fontFamily:"var(--font-mono)", fontSize:"0.75rem" },
   labelStyle: { color:"var(--text-muted)" },
 };
-const xTickProps = { fill:"var(--text-muted)", fontSize:9, fontFamily:"'DM Mono',monospace" };
-const yTickProps = { fill:"var(--text-muted)", fontSize:9, fontFamily:"'DM Mono',monospace" };
+const xTickProps = { fill:"var(--text-muted)", fontSize:9, fontFamily:"var(--font-mono)" };
+const yTickProps = { fill:"var(--text-muted)", fontSize:9, fontFamily:"var(--font-mono)" };
 
 export default function TechnicalIndicators({ symbol }: { symbol: string }) {
   const [data, setData] = useState<Enriched[]>([]);
@@ -136,7 +136,7 @@ export default function TechnicalIndicators({ symbol }: { symbol: string }) {
       {loading ? (
         <div style={{ display:"flex", justifyContent:"center", padding:"48px 0" }}><div className="spinner" /></div>
       ) : data.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", textAlign:"center", padding:"32px 0", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem" }}>No data</p>
+        <p style={{ color:"var(--text-muted)", textAlign:"center", padding:"32px 0", fontFamily:"var(--font-mono)", fontSize:"0.8rem" }}>No data</p>
       ) : (
         <>
           {/* Summary metrics */}
@@ -165,7 +165,7 @@ export default function TechnicalIndicators({ symbol }: { symbol: string }) {
           )}
 
           {/* Bollinger Bands */}
-          <p style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8 }}>Bollinger Bands (20, 2)</p>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8 }}>Bollinger Bands (20, 2)</p>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={data} margin={{ top:4, right:8, bottom:4, left:8 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
@@ -180,7 +180,7 @@ export default function TechnicalIndicators({ symbol }: { symbol: string }) {
           </ResponsiveContainer>
 
           {/* RSI */}
-          <p style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8, marginTop:20 }}>RSI (14)</p>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8, marginTop:20 }}>RSI (14)</p>
           <ResponsiveContainer width="100%" height={140}>
             <LineChart data={data} margin={{ top:4, right:8, bottom:4, left:8 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
@@ -194,7 +194,7 @@ export default function TechnicalIndicators({ symbol }: { symbol: string }) {
           </ResponsiveContainer>
 
           {/* MACD */}
-          <p style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8, marginTop:20 }}>MACD (12/26/9)</p>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:"0.7rem", color:"var(--text-secondary)", marginBottom:8, marginTop:20 }}>MACD (12/26/9)</p>
           <ResponsiveContainer width="100%" height={160}>
             <LineChart data={data} margin={{ top:4, right:8, bottom:4, left:8 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />

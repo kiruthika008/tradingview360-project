@@ -31,7 +31,7 @@ export default function NewsPanel({ symbol }: { symbol: string }) {
           <div className="spinner" />
         </div>
       ) : news.length === 0 ? (
-        <p style={{ color:"var(--text-muted)", fontFamily:"'DM Mono',monospace", fontSize:"0.8rem", textAlign:"center", padding:"24px 0" }}>
+        <p style={{ color:"var(--text-muted)", fontFamily:"var(--font-mono)", fontSize:"0.8rem", textAlign:"center", padding:"24px 0" }}>
           No recent news found.
         </p>
       ) : (
@@ -39,21 +39,21 @@ export default function NewsPanel({ symbol }: { symbol: string }) {
           {news.map((n, i) => (
             <div key={i} className="news-card">
               <a href={n.url} target="_blank" rel="noopener noreferrer" style={{
-                fontFamily:"'Syne',sans-serif", fontWeight:600, fontSize:"0.88rem",
+                fontFamily:"var(--font-sans)", fontWeight:600, fontSize:"0.88rem",
                 color:"var(--text-primary)", lineHeight:1.45, display:"block", marginBottom:8,
               }}>
                 {n.headline}
               </a>
               <div style={{ display:"flex", gap:14, flexWrap:"wrap" }}>
-                <span style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.68rem", color:sentimentColor[n.sentiment] }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:"0.68rem", color:sentimentColor[n.sentiment] }}>
                   {sentimentIcon[n.sentiment]} {n.sentiment.charAt(0).toUpperCase() + n.sentiment.slice(1)}
                 </span>
                 {n.source && (
-                  <span style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.68rem", color:"var(--text-muted)" }}>
+                  <span style={{ fontFamily:"var(--font-mono)", fontSize:"0.68rem", color:"var(--text-muted)" }}>
                     📡 {n.source}
                   </span>
                 )}
-                <span style={{ fontFamily:"'DM Mono',monospace", fontSize:"0.68rem", color:"var(--text-muted)" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:"0.68rem", color:"var(--text-muted)" }}>
                   🕒 {n.datetime}
                 </span>
               </div>

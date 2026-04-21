@@ -146,11 +146,38 @@ export default function HomePage() {
 
       {error && (
         <div style={{
-          background:"rgba(239,68,68,0.1)", border:"1px solid rgba(239,68,68,0.35)",
-          borderRadius:8, padding:"10px 16px", marginBottom:16,
-          fontFamily:"'DM Mono',monospace", fontSize:"0.82rem", color:"#fca5a5",
+          background:"rgba(239,68,68,0.08)", border:"1px solid rgba(239,68,68,0.3)",
+          borderRadius:10, padding:"16px 20px", marginBottom:16,
         }}>
-          ⚠ {error}
+          <div style={{
+            fontFamily:"'Inter',sans-serif", fontSize:"0.85rem",
+            color:"#fca5a5", fontWeight:600, marginBottom: error.includes("NEXT_PUBLIC") ? 10 : 0,
+          }}>
+            ⚠ {error}
+          </div>
+          {error.includes("NEXT_PUBLIC_API_URL") && (
+            <div style={{
+              fontFamily:"'JetBrains Mono',monospace", fontSize:"0.75rem",
+              color:"var(--text-muted)", lineHeight:1.7, marginTop:8,
+            }}>
+              <strong style={{ color:"var(--text-secondary)" }}>Fix:</strong> In Vercel → your project → <strong style={{ color:"var(--text-secondary)" }}>Settings → Environment Variables</strong>, add:<br/>
+              <code style={{ background:"var(--bg-elevated)", padding:"2px 8px", borderRadius:4, color:"var(--gold)", display:"inline-block", marginTop:4 }}>
+                NEXT_PUBLIC_API_URL = https://your-backend.onrender.com
+              </code>
+              <br/>Then redeploy. See <strong style={{ color:"var(--text-secondary)" }}>DEPLOY.md</strong> for full instructions.
+            </div>
+          )}
+          {error.includes("Cannot reach backend") && (
+            <div style={{
+              fontFamily:"'JetBrains Mono',monospace", fontSize:"0.75rem",
+              color:"var(--text-muted)", lineHeight:1.7, marginTop:8,
+            }}>
+              <strong style={{ color:"var(--text-secondary)" }}>Possible causes:</strong><br/>
+              1. Render service is sleeping (free tier) — visit your Render dashboard and wake it<br/>
+              2. CORS not configured — check <code style={{ color:"var(--gold)" }}>ALLOWED_ORIGINS</code> in Render env vars<br/>
+              3. Wrong URL — confirm <code style={{ color:"var(--gold)" }}>NEXT_PUBLIC_API_URL</code> matches your Render URL exactly
+            </div>
+          )}
         </div>
       )}
 
@@ -229,7 +256,7 @@ export default function HomePage() {
           )}
 
           {!quote && !loading && !error && (
-            <div style={{ textAlign:"center", padding:"80px 0", color:"var(--text-muted)", fontFamily:"'DM Mono',monospace" }}>
+            <div style={{ textAlign:"center", padding:"80px 0", color:"var(--text-muted)", fontFamily:"var(--font-mono)" }}>
               Enter a ticker symbol above to begin.
             </div>
           )}
