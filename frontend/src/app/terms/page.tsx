@@ -1,8 +1,6 @@
+"use client";
 import LegalPage from "@/components/LegalPage";
 
-export const metadata = {
-  title: "Terms of Use | Quantum Trade Intelligence",
-};
 
 const sections = [
   {

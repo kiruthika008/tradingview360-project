@@ -1,9 +1,6 @@
+"use client";
 import LegalPage from "@/components/LegalPage";
 
-export const metadata = {
-  title: "Privacy Policy | Quantum Trade Intelligence",
-  description: "How QTI collects, uses, and protects your data.",
-};
 
 const sections = [
   {

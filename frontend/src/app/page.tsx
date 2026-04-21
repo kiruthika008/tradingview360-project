@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-
 import Navbar from "@/components/Navbar";
 import HeroBanner from "@/components/HeroBanner";
 import Footer from "@/components/Footer";
@@ -14,8 +13,8 @@ import Watchlist from "@/components/Watchlist";
 import PortfolioTracker from "@/components/PortfolioTracker";
 import PriceAlerts from "@/components/PriceAlerts";
 import SectorPeers from "@/components/SectorPeers";
-
 import { api } from "@/lib/api";
+
 interface Quote {
   ticker: string; price: number; change: number; signal: string;
   open?: number; high?: number; low?: number; prev_close?: number;
