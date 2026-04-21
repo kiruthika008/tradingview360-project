@@ -1,20 +1,21 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import Navbar from "@/components/Navbar";
-import HeroBanner from "@/components/HeroBanner";
-import Footer from "@/components/Footer";
-import AdBanner from "@/components/AdBanner";
-import MetricCard from "@/components/MetricCard";
-import PriceChart from "@/components/PriceChart";
-import TechnicalIndicators from "@/components/TechnicalIndicators";
-import NewsPanel from "@/components/NewsPanel";
-import AIChat from "@/components/AIChat";
-import Watchlist from "@/components/Watchlist";
-import PortfolioTracker from "@/components/PortfolioTracker";
-import PriceAlerts from "@/components/PriceAlerts";
-import SectorPeers from "@/components/SectorPeers";
-import { api } from "@/lib/api";
 
+import Navbar from "../../components/Navbar";
+import HeroBanner from "../../components/HeroBanner";
+import Footer from "../../components/Footer";
+import AdBanner from "../../components/AdBanner";
+import MetricCard from "../../components/MetricCard";
+import PriceChart from "../../components/PriceChart";
+import TechnicalIndicators from "../../components/TechnicalIndicators";
+import NewsPanel from "../../components/NewsPanel";
+import AIChat from "../../components/AIChat";
+import Watchlist from "../../components/Watchlist";
+import PortfolioTracker from "../../components/PortfolioTracker";
+import PriceAlerts from "../../components/PriceAlerts";
+import SectorPeers from "../../components/SectorPeers";
+
+import { api } from "../../lib/api";
 interface Quote {
   ticker: string; price: number; change: number; signal: string;
   open?: number; high?: number; low?: number; prev_close?: number;
