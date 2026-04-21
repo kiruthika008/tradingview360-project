@@ -22,7 +22,7 @@ app = FastAPI(title="QTI API", version="2.0")
 # Allow Vercel frontend + localhost dev
 ALLOWED_ORIGINS = os.environ.get(
     "ALLOWED_ORIGINS",
-    "http://localhost:3000,https://your-app.vercel.app"
+    "http://localhost:3000,https://tradingview360-project-kiruthika008s-projects.vercel.app"
 ).split(",")
 
 app.add_middleware(

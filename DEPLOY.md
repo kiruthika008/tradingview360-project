@@ -28,7 +28,7 @@
    |----------------------|--------------------------------|
    | `FINNHUB_KEY`        | your Finnhub API key           |
    | `ANTHROPIC_API_KEY`  | your Anthropic API key         |
-   | `ALLOWED_ORIGINS`    | https://your-app.vercel.app    |
+   | `ALLOWED_ORIGINS`    | https://tradingview360-project-kiruthika008s-projects.vercel.app    |
 
 6. Click **Deploy**. Note the public URL (e.g. `https://qti-backend.onrender.com`).
 
@@ -50,7 +50,7 @@
    |------------------------|------------------------------------|
    | `NEXT_PUBLIC_API_URL`  | https://qti-backend.onrender.com   |
 
-5. Click **Deploy**. Vercel gives you `https://your-app.vercel.app`.
+5. Click **Deploy**. Vercel gives you `https://tradingview360-project-kiruthika008s-projects.vercel.app`.
 
 6. Go back to **Render → your service → Environment** and update  
    `ALLOWED_ORIGINS` to your real Vercel URL.
