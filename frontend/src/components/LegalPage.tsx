@@ -14,7 +14,7 @@ interface Props {
 
 export default function LegalPage({ title, eyebrow, lastUpdated, sections }: Props) {
   return (
-    <div style={{ position:"relative", zIndex:1, maxWidth:1280, margin:"0 auto", padding:"24px 20px" }}>
+    <div className="page-wrap">
       <Navbar />
 
       <div style={{ maxWidth:780, margin:"0 auto" }}>

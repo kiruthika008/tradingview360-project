@@ -23,7 +23,7 @@ const VALUES = [
 
 export default function AboutPage() {
   return (
-    <div style={{ position:"relative", zIndex:1, maxWidth:1280, margin:"0 auto", padding:"24px 20px" }}>
+    <div className="page-wrap">
       <Navbar />
 
       <div style={{ maxWidth:860, margin:"0 auto" }}>
