@@ -134,8 +134,12 @@ export default function HomePage() {
 
   return (
     <div className="page-wrap">
-      {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
+      {showAuth && (
+        <AuthModal onClose={() => setShowAuth(false)} />
+      )}
+  
       <Navbar onShowAuth={() => setShowAuth(true)} />
+  
       <HeroBanner />
 
       {/* ── Market mode selector ── */}
