@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import Navbar from "@/components/Navbar";
+import StaticPageShell from "@/components/StaticPageShell";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
@@ -23,12 +22,8 @@ const VALUES = [
 ];
 
 export default function AboutPage() {
-  const [showAuth, setShowAuth] = useState(false);
-
   return (
-    <div className="page-wrap">
-      <Navbar onShowAuth={() => setShowAuth(true)} />
-
+    <StaticPageShell>
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
         <div style={{
@@ -195,6 +190,6 @@ export default function AboutPage() {
       </div>
 
       <Footer />
-    </div>
+    </StaticPageShell>
   );
 }

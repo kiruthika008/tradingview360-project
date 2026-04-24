@@ -15,6 +15,7 @@ import PriceAlerts from "@/components/PriceAlerts";
 import SectorPeers from "@/components/SectorPeers";
 import IndiaSearch from "@/components/IndiaSearch";
 import AuthModal from "@/components/AuthModal";
+import { MarketStatusBar } from "@/components/MarketStatus";
 import { useAuth } from "@/components/AuthProvider";
 import { api, isIndianStock } from "@/lib/api";
 
