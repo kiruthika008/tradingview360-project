@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -13,9 +14,11 @@ interface Props {
 }
 
 export default function LegalPage({ title, eyebrow, lastUpdated, sections }: Props) {
+  const [showAuth, setShowAuth] = useState(false);
   return (
     <div className="page-wrap">
-      <Navbar />
+      {/* ✅ FIXED NAVBAR */}
+      <Navbar onShowAuth={() => setShowAuth(true)} />
 
       <div style={{ maxWidth:780, margin:"0 auto" }}>
         {/* Breadcrumb */}
