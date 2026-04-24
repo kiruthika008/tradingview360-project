@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const TICKERS = ["AAPL", "TSLA", "NVDA", "MSFT", "BNS.TO", "AMZN", "SPY", "QQQ"];
+const TICKERS = ["AAPL", "RELIANCE.NS", "TSLA", "TCS.NS", "NVDA", "INFY.NS", "MSFT", "HDFCBANK.NS", "BNS.TO", "WIPRO.NS", "SPY", "ZOMATO.NS"];
 const FEATURES = [
   { icon:"⚡", label:"Live Quotes",      desc:"Real-time prices, delayed ≤15s" },
   { icon:"🤖", label:"AI Analysis",      desc:"Claude-powered BUY/SELL/HOLD" },
@@ -9,6 +9,7 @@ const FEATURES = [
   { icon:"💼", label:"Portfolio Tracker",desc:"P&L tracked across positions" },
   { icon:"🔔", label:"Price Alerts",     desc:"Trigger above or below targets" },
   { icon:"🇨🇦", label:"CAD/USD Toggle",  desc:"Instant currency conversion" },
+  { icon:"🇮🇳", label:"Indian Markets",  desc:"NSE & BSE via Finnhub" },
 ];
 
 export default function HeroBanner() {
@@ -79,7 +80,7 @@ export default function HeroBanner() {
             }}>
               Stock Terminal
             </span>
-            <br />for US &amp; Canadian Markets
+            <br />for US, Canadian &amp; Indian Markets
           </h1>
 
           {/* Sub-copy */}
