@@ -24,7 +24,7 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <div className="page-wrap">
-      <Navbar />
+      <Navbar onShowAuth={() => {}} />
 
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
