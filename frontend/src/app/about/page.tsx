@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -22,9 +23,11 @@ const VALUES = [
 ];
 
 export default function AboutPage() {
+  const [showAuth, setShowAuth] = useState(false);
+
   return (
     <div className="page-wrap">
-      <Navbar onShowAuth={() => {}} />
+      <Navbar onShowAuth={() => setShowAuth(true)} />
 
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
