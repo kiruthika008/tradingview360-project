@@ -67,20 +67,16 @@ export default function ContactPage() {
     // In production: POST to /api/contact or a form service like Formspree
     setSent(true);
   }
+  const [showAuth, setShowAuth] = useState(false);
+  return (
+    <div className="page-wrap">
+      {/* ✅ FIXED NAVBAR */}
+      <Navbar onShowAuth={() => setShowAuth(true)} />
 
-  export default function AboutPage() {
-    const [showAuth, setShowAuth] = useState(false);
-    return (
-      <div className="page-wrap">
-        <Navbar onShowAuth={() => {}} />
-
-      <div style={{ maxWidth:860, margin:"0 auto" }}>
+      <div style={{ maxWidth: 860, margin: "0 auto" }}>
         {/* Breadcrumb */}
-        <div style={{
-          fontFamily:"var(--font-mono)", fontSize:"0.7rem",
-          color:"var(--text-muted)", marginBottom:24, display:"flex", gap:8, alignItems:"center",
-        }}>
-          <Link href="/" style={{ color:"var(--gold)", textDecoration:"none" }}>Home</Link>
+        <div style={{ display: "flex", gap: 8 }}>
+          <Link href="/">Home</Link>
           <span>›</span>
           <span>Contact Us</span>
         </div>
