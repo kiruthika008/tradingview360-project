@@ -70,10 +70,9 @@ export default function ContactPage() {
 
   export default function AboutPage() {
     const [showAuth, setShowAuth] = useState(false);
-  
     return (
       <div className="page-wrap">
-        <Navbar onShowAuth={() => setShowAuth(true)} />
+        <Navbar onShowAuth={() => {}} />
 
       <div style={{ maxWidth:860, margin:"0 auto" }}>
         {/* Breadcrumb */}
